@@ -111,8 +111,7 @@ $movieDuration .= $rememberSort;
             if (isset($_GET["movieTitel"])) {
                 if ($_GET["movieTitel"] == "titel") {
                     $stmt = $pdo->query('SELECT titel, duur, id FROM netland.inhoud ORDER BY titel WHERE soort="movies"');
-                    while ($info = $stmt->fetch())
-                    {
+                    while ($info = $stmt->fetch()) {
                         echo ("<tr><td>" . $info['titel'] . "</td><td>" . $info['duur'] . "</td><td><a name='id' type='submit' href='http://localhost/films.php?id=$info[id]'>Details</a></td></tr>");
                     }
                 }
@@ -120,24 +119,19 @@ $movieDuration .= $rememberSort;
             if (isset($_GET["movieDuration"])) {
                 if ($_GET["movieDuration"] == "duration") {
                     $stmt = $pdo->query('SELECT titel, duur, id FROM netland.inhoud ORDER BY duur WHERE soort="movies"');
-                    while ($info = $stmt->fetch())
-                    {
+                    while ($info = $stmt->fetch()) {
                         echo ("<tr><td>" . $info['titel'] . "</td><td>" . $info['duur'] . "</td><td><a name='id' type='submit' href='http://localhost/films.php?id=$info[id]'>Details</a></td></tr>");
                     }
-                }
-                else
-                {
+                } else {
                     $stmt = $pdo->query('SELECT titel, duur, id FROM netland.inhoud WHERE soort="movies"');
-                    while ($info = $stmt->fetch())
-                    {
+                    while ($info = $stmt->fetch()) {
                         echo ("<tr><td>" . $info['titel'] . "</td><td>" . $info['duur'] . "</td><td><a name='id' type='submit' href='http://localhost/films.php?id=$info[id]'>Details</a></td></tr>");
                     }
                 }
             }
             if ($stmt == "") {
                 $stmt = $pdo->query('SELECT titel, duur, id FROM netland.inhoud WHERE soort="movies"');
-                while ($info = $stmt->fetch())
-                {
+                while ($info = $stmt->fetch()) {
                     echo ("<tr><td>" . $info['titel'] . "</td><td>" . $info['duur'] . "</td><td><a name='id' type='submit' href='http://localhost/films.php?id=$info[id]'>Details</a></td></tr>");
                 }
             }
@@ -177,8 +171,7 @@ $movieDuration .= $rememberSort;
             if (isset($_GET["serieTitle"])) {
                 if ($_GET["serieTitle"] == "title") {
                     $stmt1 = $pdo->query('SELECT title, rating, id FROM netland.inhoud ORDER BY title WHERE soort="series"');
-                    while ($info = $stmt1->fetch())
-                    {
+                    while ($info = $stmt1->fetch()) {
                         echo ("<tr><td>" . $info['title'] . "</td><td>" . $info['rating'] . "</td><td><a name='id' type='submit' href='http://localhost/series.php?id=$info[id]'>Details</a></td></tr>");
                     }
                 }
@@ -186,17 +179,14 @@ $movieDuration .= $rememberSort;
             if (isset($_GET["serieRating"])) {
                 if ($_GET["serieRating"] == "rating") {
                     $stmt1 = $pdo->query('SELECT title, rating, id FROM netland.inhoud ORDER BY rating WHERE soort="series"');
-                    while ($info = $stmt1->fetch())
-                    {
+                    while ($info = $stmt1->fetch()) {
                         echo ("<tr><td>" . $info['title'] . "</td><td>" . $info['rating'] . "</td><td><a name='id' type='submit' href='http://localhost/series.php?id=$info[id]'>Details</a></td></tr>");
                     }
                 }
-
             }
             if ($stmt1 == "") {
                 $stmt1 = $pdo->query('SELECT titel, rating, id FROM netland.inhoud WHERE soort="series"');
-                while ($info = $stmt1->fetch())
-                {
+                while ($info = $stmt1->fetch()) {
                     echo ("<tr><td>" . $info['titel'] . "</td><td>" . $info['rating'] . "</td><td><a name='id' type='submit' href='http://localhost/series.php?id=$info[id]'>Details</a></td></tr>");
                 }
             }

@@ -37,12 +37,8 @@ if (isset($_POST["name"]) || isset($_POST["password"])) {
             setcookie("loggedInUser", $nameIn, time() + 2 * 24 * 60 * 60);
             header("location: index.php");
             //kijkt of de naam klopt me die geven met een email in database, hetzelfde voor wachtwoord
-            
         }
-    }
-
-    else
-    {
+    } else {
         echo "wachtwoord of gebruikersnaam klopt niet";
     }
 }
