@@ -26,17 +26,14 @@ $pdo = new PDO($servername, $username, $password);
 
 
 <?php
-if (isset($_POST["name"]) || isset($_POST["password"]))
-{
+if (isset($_POST["name"]) || isset($_POST["password"])) {
     $nameIn = $_POST['name'];
     $wachtwoordIn = $_POST['password'];
     // ingevulde wachtwoord en naam van gebruiker
     $log = $pdo->query("SELECT naam, wachtwoord, id FROM netland.gebruikers WHERE naam='$nameIn'");
     $inlogPremit = $log->fetch();
-    if (!empty($inlogPremit['naam']))
-    {
-        if ($nameIn == $inlogPremit['naam'] && $wachtwoordIn == $inlogPremit['wachtwoord'])
-        {
+    if (!empty($inlogPremit['naam'])) {
+        if ($nameIn == $inlogPremit['naam'] && $wachtwoordIn == $inlogPremit['wachtwoord']) {
             setcookie("loggedInUser", $nameIn, time() + 2 * 24 * 60 * 60);
             header("location: index.php");
             //kijkt of de naam klopt me die geven met een email in database, hetzelfde voor wachtwoord

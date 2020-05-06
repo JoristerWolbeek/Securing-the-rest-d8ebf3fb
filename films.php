@@ -4,8 +4,7 @@ $servername = "mysql:host=localhost;dbname=netland";
 $username = "root";
 $password = "";
 $pdo = new PDO($servername, $username, $password);
-if ($_COOKIE["loggedInUser"] != "Admin")
-{
+if ($_COOKIE["loggedInUser"] != "Admin") {
     header("location: login.php");
 }
 
