@@ -4,8 +4,7 @@ $servername = "mysql:host=localhost;dbname=netland";
 $username = "root";
 $password = "";
 $pdo = new PDO($servername, $username, $password);
-if ($_COOKIE["loggedInUser"] != "Admin")
-{
+if ($_COOKIE["loggedInUser"] != "Admin") {
     header("location: login.php");
 }
 ?>
@@ -112,10 +111,10 @@ textarea {
 <body>
 
     <?php
-$stmt = $pdo->prepare("SELECT titel, rating, omschrijving, seizoenen, landVanAfkomst, taal, awards, id FROM netland.inhoud WHERE id=? AND soort='series'");
-$stmt->execute([intval($_GET["id"]) ]);
-$info = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
+    $stmt = $pdo->prepare("SELECT titel, rating, omschrijving, seizoenen, landVanAfkomst, taal, awards, id FROM netland.inhoud WHERE id=? AND soort='series'");
+    $stmt->execute([intval($_GET["id"]) ]);
+    $info = $stmt->fetch(PDO::FETCH_ASSOC);
+    ?>
     <a href="http://localhost/series.php<?php echo "?id=$info[id]" ?>">Vorige pagina</a>
 
 
@@ -134,11 +133,12 @@ $info = $stmt->fetch(PDO::FETCH_ASSOC);
     
 <?php
 var_dump($info);
-if (isset($_POST["name"]) || isset($_POST["rating"]) || 
-isset($_POST["beschrijving"]) || isset($_POST["landVanAfkomst"]) || isset($_POST["taal"]) || isset($_POST["prijzen"]) || isset($_POST["seizoenen"]))
-{
+if (
+    isset($_POST["name"]) || isset($_POST["rating"]) ||
+    isset($_POST["beschrijving"]) || isset($_POST["landVanAfkomst"]) || isset($_POST["taal"]) || isset($_POST["prijzen"]) || isset($_POST["seizoenen"])
+) {
     $updateSeries = $pdo->prepare("UPDATE inhoud SET titel=?, omschrijving=?, landVanAfkomst=?, taal=?, awards=?, rating=?, seizoenen=? WHERE id=? AND soort='series'");
-    $updateSeries->execute([$_POST["name"], $_POST["beschrijving"], $_POST["landVanAfkomst"], 
+    $updateSeries->execute([$_POST["name"], $_POST["beschrijving"], $_POST["landVanAfkomst"],
     $_POST["taal"], $_POST["prijzen"], $_POST["rating"], $_POST["seizoenen"], $_GET["id"]]);
     header("Refresh:0");
 }
