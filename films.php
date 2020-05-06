@@ -4,8 +4,9 @@ $servername = "mysql:host=localhost;dbname=netland";
 $username = "root";
 $password = "";
 $pdo = new PDO($servername, $username, $password);
-if($_COOKIE["loggedInUser"] != "Admin"){
-    header ("location: login.php");
+if ($_COOKIE["loggedInUser"] != "Admin")
+{
+    header("location: login.php");
 }
 
 ?>
@@ -60,13 +61,13 @@ a {
 <body>
 
 <a href="http://localhost/index.php">Vorige pagina</a>
-<?php  
+<?php
 
 $stmt = $pdo->prepare("SELECT titel, duur, landVanAfkomst, omschrijving, taal, trailer, id FROM netland.inhoud WHERE id=? AND soort='movies'");
 $stmt->execute([$_GET['id']]);
-while($info = $stmt->fetch()) {
-    echo("<h1>".$info['titel']."</h1><br><b>".$info["duur"]." Minuten </b><br><b>Land van afkomst </b>".$info["landVanAfkomst"].
-    "<br><br><b>Beschrijving </b><br>".$info["omschrijving"]."<br><br><b>Taal </b>".$info["taal"]."<br><a href=http://localhost/movieOverlord.php?id=$info[id]>Edit</a>
+while ($info = $stmt->fetch())
+{
+    echo ("<h1>" . $info['titel'] . "</h1><br><b>" . $info["duur"] . " Minuten </b><br><b>Land van afkomst </b>" . $info["landVanAfkomst"] . "<br><br><b>Beschrijving </b><br>" . $info["omschrijving"] . "<br><br><b>Taal </b>" . $info["taal"] . "<br><a href=http://localhost/movieOverlord.php?id=$info[id]>Edit</a>
     <br><iframe src='https://www.youtube.com/embed/$info[trailer]'</iframe>");
 }
 
